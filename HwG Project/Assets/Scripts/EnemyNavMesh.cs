@@ -1,16 +1,21 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class EnemyNavMesh : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform movePositionTransform;
+
+    private NavMeshAgent navMeshAgent;
+
+    private void Awake()
     {
-        
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        navMeshAgent.destination = movePositionTransform.position;
     }
 }
